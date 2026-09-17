@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab Assignment: JavaScript Exercises</title>
+<style>
+   body {
+     font-family: Arial, sans-serif;
+     max-width: 800px;
+     margin: 20px auto;
+     padding: 0 20px;
+     background-color: #f9f9f9;
+   }
+   .card {
+     background: #ffffff;
+     border: 1px solid #ddd;
+     border-radius: 8px;
+     padding: 15px 20px;
+     margin-bottom: 15px;
+     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+   }
+   h2 {
+     margin-top: 0;
+     color: #333;
+     font-size: 1.1rem;
+     border-bottom: 2px solid #eee;
+     padding-bottom: 8px;
+   }
+   p, li {
+     color: #555;
+     margin: 5px 0;
+   }
+   ul {
+     padding-left: 20px;
+   }
+</style>
+</head>
+<body>
+<h1>Lab Assignment: JavaScript Exercises</h1>
+<!-- 1. Order Calculator -->
+<div class="card">
+<h2>1. Order Calculator</h2>
+<div id="out-1"></div>
+</div>
+<!-- 2. Delivery Rule -->
+<div class="card">
+<h2>2. Delivery Rule</h2>
+<div id="out-2"></div>
+</div>
+<!-- 3. Cart Total -->
+<div class="card">
+<h2>3. Cart Total</h2>
+<div id="out-3"></div>
+</div>
+<!-- 4. Discount Function -->
+<div class="card">
+<h2>4. Discount Function</h2>
+<div id="out-4"></div>
+</div>
+<!-- 5. Product Object -->
+<div class="card">
+<h2>5. Product Object</h2>
+<ul id="out-5"></ul>
+</div>
+<script>
+   // AI Log: JavaScript lab assignment rendered directly onto the HTML webpage without console.log.
+   // 1. Order calculator
+   function calculateOrder(price, quantity) {
+     const subtotal = price * quantity;
+     const vat = subtotal * 0.07;
+     const total = subtotal + vat;
+     document.getElementById("out-1").innerHTML = `
+<p><strong>Subtotal:</strong> $${subtotal.toFixed(2)}</p>
+<p><strong>VAT (7%):</strong> $${vat.toFixed(2)}</p>
+<p><strong>Total:</strong> $${total.toFixed(2)}</p>
+     `;
+   }
+   calculateOrder(100, 3);
+   // 2. Delivery rule
+   function getDeliveryCharge(orderAmount) {
+     let deliveryCharge;
+     if (orderAmount >= 1000) {
+       deliveryCharge = 0;
+     } else if (orderAmount >= 500) {
+       deliveryCharge = 30;
+     } else {
+       deliveryCharge = 50;
+     }
+     document.getElementById("out-2").innerHTML = `
+<p><strong>Order Amount:</strong> $${orderAmount}</p>
+<p><strong>Delivery Charge:</strong> $${deliveryCharge}</p>
+     `;
+   }
+   getDeliveryCharge(750);
+   // 3. Cart total
+   const itemPrices = [120, 450, 80, 210];
+   let cartTotal = 0;
+   for (let i = 0; i < itemPrices.length; i++) {
+     cartTotal += itemPrices[i];
+   }
+   document.getElementById("out-3").innerHTML = `
+<p><strong>Prices in Cart:</strong> ${itemPrices.join(", ")}</p>
+<p><strong>Total Sum:</strong> $${cartTotal}</p>
+   `;
+   // 4. Discount function
+   function calculateDiscount(amount, percentage) {
+     const discountAmount = (amount * percentage) / 100;
+     return amount - discountAmount;
+   }
+   const originalAmount = 500;
+   const discountPercent = 10;
+   const finalAmount = calculateDiscount(originalAmount, discountPercent);
+   document.getElementById("out-4").innerHTML = `
+<p><strong>Original Price:</strong> $${originalAmount}</p>
+<p><strong>Discount:</strong> ${discountPercent}%</p>
+<p><strong>Final Price:</strong> $${finalAmount}</p>
+   `;
+   // 5. Product object
+   const products = [
+     { name: "Laptop", price: 25000 },
+     { name: "Mouse", price: 500 },
+     { name: "Keyboard", price: 1200 }
+   ];
+   const productList = document.getElementById("out-5");
+   products.forEach(product => {
+     const li = document.createElement("li");
+     li.textContent = `Product: ${product.name} — Price: $${product.price}`;
+     productList.appendChild(li);
+   });
+</script>
+</body>
+</html>
+has context menu
+
